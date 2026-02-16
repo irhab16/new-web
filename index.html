@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Tech & Blockchain Enthusiast</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-primary: #000000;
+        --bg-secondary: #0a0a0a;
+        --accent-primary: #ccff00;
+        --accent-secondary: #6b7280;
+        --text-primary: #ffffff;
+        --text-secondary: #a0a0a0;
+        --card-bg: rgba(15, 15, 15, 0.6);
+        --border-color: rgba(255, 255, 255, 0.06);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        overflow-x: hidden;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .background-animation {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .blockchain-grid {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+            ellipse 800px 600px at 20% 25%,
+            rgba(204, 255, 0, 0.03) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse 700px 700px at 80% 70%,
+            rgba(156, 163, 175, 0.04) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse 600px 800px at 50% 90%,
+            rgba(107, 114, 128, 0.025) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse 900px 500px at 70% 20%,
+            rgba(204, 255, 0, 0.02) 0%,
+            transparent 50%
+          );
+      }
+
+      .container {
+        position: relative;
+        z-index: 1;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 80px 30px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .hero {
+        text-align: left;
+        margin-bottom: 80px;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        font-weight: 300;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+      }
+
+      .hero h1 strong {
+        font-weight: 600;
+      }
+
+      .accent {
+        color: var(--accent-primary);
+        text-shadow: 0 0 10px rgba(204, 255, 0, 0.35);
+      }
+
+      .hero-tagline {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin-bottom: 40px;
+        font-weight: 400;
+      }
+
+      .intro-section {
+        margin-bottom: 120px;
+      }
+
+      .intro-content {
+        max-width: 700px;
+        padding: 40px 0;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .intro-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        font-weight: 300;
+      }
+
+      .intro-text strong {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .section-header {
+        margin-bottom: 32px;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        font-weight: 400;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+        text-align: left;
+      }
+
+      .skills-section {
+        margin-bottom: 120px;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1px;
+        background: var(--border-color);
+        border: 1px solid var(--border-color);
+      }
+
+      .skill-item {
+        background: var(--bg-primary);
+        padding: 40px 28px;
+        position: relative;
+        transition: background 0.3s ease;
+      }
+
+      .skill-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent-primary);
+        transition: width 0.4s ease;
+      }
+
+      .skill-item:hover::before {
+        width: 100%;
+      }
+
+      .skill-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+        letter-spacing: -0.01em;
+      }
+
+      .skill-index {
+        font-size: 0.7rem;
+        color: var(--text-secondary);
+        letter-spacing: 2px;
+        margin-bottom: 16px;
+      }
+
+      .skill-desc {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        font-weight: 300;
+      }
+
+      .project-section {
+        margin-bottom: 120px;
+      }
+
+      .project-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        background: var(--border-color);
+        border: 1px solid var(--border-color);
+      }
+
+      .project-item {
+        background: var(--bg-primary);
+        padding: 32px 28px;
+        text-decoration: none;
+        color: var(--text-primary);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+      }
+
+      .project-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent-primary);
+        transition: width 0.4s ease;
+      }
+
+      .project-item:hover::before {
+        width: 100%;
+      }
+
+      .project-info {
+        flex: 1;
+      }
+
+      .project-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 8px;
+        letter-spacing: -0.01em;
+      }
+
+      .project-desc {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        font-weight: 300;
+      }
+
+      .empty-state {
+        background: var(--bg-primary);
+        padding: 60px 28px;
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        font-weight: 300;
+      }
+
+      .contact-section {
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1px;
+        background: var(--border-color);
+        border: 1px solid var(--border-color);
+      }
+
+      .contact-item {
+        background: var(--bg-primary);
+        padding: 28px 24px;
+        text-decoration: none;
+        color: var(--text-primary);
+        position: relative;
+      }
+
+      .contact-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent-primary);
+        transition: width 0.4s ease;
+      }
+
+      .contact-item:hover::before {
+        width: 100%;
+      }
+
+      .contact-item:hover .contact-value {
+        color: var(--accent-primary);
+        transition: color 0.3s ease;
+      }
+
+      .contact-label {
+        font-size: 0.65rem;
+        color: var(--text-secondary);
+        text-transform: lowercase;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .contact-value {
+        font-size: 0.95rem;
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+
+      .footer-cta {
+        margin-top: 120px;
+        text-align: center;
+      }
+
+      .manifesto {
+        margin-top: 80px;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        text-transform: lowercase;
+        color: rgba(255, 255, 255, 0.25);
+        text-align: center;
+      }
+
+      .cta-text {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        margin-bottom: 24px;
+        font-weight: 300;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: transparent;
+        color: var(--accent-primary);
+        font-weight: 500;
+        font-size: 0.9rem;
+        padding: 16px 40px;
+        text-decoration: none;
+        text-transform: lowercase;
+        letter-spacing: 1px;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+      }
+
+      .cta-button:hover {
+        border-color: var(--accent-primary);
+        box-shadow: 0 0 20px rgba(204, 255, 0, 0.15);
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 60px 20px;
+        }
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        .skills-grid,
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="background-animation">
+      <div class="blockchain-grid"></div>
+    </div>
+
+    <div class="container">
+      <section class="hero">
+        <h1>
+          Exploring the intersection of tech and
+          <span class="accent">blockchain</span>
+        </h1>
+        <p class="hero-tagline">
+          A quiet exploration of how decentralized systems reshape power, trust,
+          and value.
+        </p>
+      </section>
+
+      <section class="intro-section">
+        <div class="intro-content">
+          <p class="intro-text">
+            Hi, I'm <strong>Irhab Zulirfan</strong>. Drawn to systems that
+            reduce blind trust and expand individual sovereignty. Learning in
+            public, building in fragments — moving steadily from curiosity
+            toward contribution within the decentralized frontier.
+          </p>
+        </div>
+      </section>
+
+      <section class="skills-section">
+        <div class="section-header">
+          <h2 class="section-title">Interest</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <div class="skill-index">01</div>
+            <div class="skill-name">Blockchain</div>
+            <div class="skill-desc">
+              Decentralized systems & smart contracts
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-index">02</div>
+            <div class="skill-name">Crypto Investment</div>
+            <div class="skill-desc">
+              Market research, on-chain analysis & long-term conviction plays
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-index">03</div>
+            <div class="skill-name">Web3</div>
+            <div class="skill-desc">
+              Protocols, dApps & decentralized application layers
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-index">04</div>
+            <div class="skill-name">Innovation</div>
+            <div class="skill-desc">
+              Exploring new models of trust, coordination & digital sovereignty
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="project-section">
+        <div class="section-header">
+          <h2 class="section-title">Project Under Development</h2>
+        </div>
+        <div class="project-list">
+          <div class="empty-state">
+            Early-stage experiments in progress. Select work will surface
+            quietly as it matures.
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section">
+        <div class="section-header">
+          <h2 class="section-title">Connect</h2>
+        </div>
+        <div class="contact-grid">
+          <a href="#" class="contact-item">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">[email protected]</div>
+          </a>
+
+          <a href="#" class="contact-item">
+            <div class="contact-label">GitHub</div>
+            <div class="contact-value">@username</div>
+          </a>
+
+          <a href="#" class="contact-item">
+            <div class="contact-label">X</div>
+            <div class="contact-value">@username</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="footer-cta">
+        <p class="cta-text">
+          For those building at the edge — aligned conversations are always
+          welcome.
+        </p>
+        <a href="#contact" class="cta-button">start a conversation</a>
+      </section>
+
+      <div class="manifesto">less talk. more building.</div>
+    </div>
+  </body>
+</html>
