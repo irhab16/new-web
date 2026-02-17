@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio - Tech & Blockchain Enthusiast</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Irhab Zulirfan</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=3" />
+  <link rel="shortcut icon" href="favicon.svg?v=3" />
+  <meta name="theme-color" content="#000000" />
+
+
+  <style>
       :root {
         --bg-primary: #000000;
         --bg-secondary: #0a0a0a;
@@ -35,6 +41,8 @@
         overflow-x: hidden;
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
+        scroll-behavior: smooth;
+
       }
 
       .background-animation {
@@ -84,6 +92,8 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        animation: fadeIn 0.8s ease-out forwards;
+        opacity: 0;
       }
 
       .hero {
@@ -420,6 +430,18 @@
           gap: 24px;
         }
       }
+
+      @keyframes fadeIn {
+       from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
     </style>
   </head>
   <body>

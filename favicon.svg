@@ -1,0 +1,33 @@
+<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="240" height="240" fill="#000000"/>
+
+  <!-- ===== I ===== -->
+  <line x1="60" y1="55" x2="60" y2="185"
+        stroke="#fafafa"
+        stroke-width="18"
+        stroke-linecap="round"/>
+
+  <!-- Kotak I -->
+  <rect x="50" y="45" width="20" height="20" fill="#ccff00" rx="4"/>
+  <rect x="50" y="175" width="20" height="20" fill="#ccff00" rx="4"/>
+
+  <!-- ===== Z ===== -->
+  <!-- Top -->
+  <line x1="110" y1="60" x2="190" y2="60"
+        stroke="#fefefe"
+        stroke-width="22"
+        stroke-linecap="round"/>
+
+  <!-- Diagonal -->
+  <line x1="190" y1="60" x2="110" y2="180"
+        stroke="#ccff00"
+        stroke-width="22"
+        stroke-linecap="round"/>
+
+  <!-- Bottom -->
+  <line x1="110" y1="180" x2="190" y2="180"
+        stroke="#ffffff"
+        stroke-width="22"
+        stroke-linecap="round"/>
+</svg>
