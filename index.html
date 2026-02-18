@@ -60,26 +60,12 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background-image: radial-gradient(
-            ellipse 800px 600px at 20% 25%,
-            rgba(204, 255, 0, 0.03) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse 700px 700px at 80% 70%,
-            rgba(156, 163, 175, 0.04) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse 600px 800px at 50% 90%,
-            rgba(107, 114, 128, 0.025) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            ellipse 900px 500px at 70% 20%,
-            rgba(204, 255, 0, 0.02) 0%,
-            transparent 50%
-          );
+        background:
+        radial-gradient(
+        ellipse 1200px 800px at 50% -10%,
+        rgba(255,255,255,0.04) 0%,
+        transparent 60%
+        );
       }
 
       .container {
@@ -87,18 +73,18 @@
         z-index: 1;
         max-width: 1100px;
         margin: 0 auto;
-        padding: 80px 30px;
+        padding: 120px 40px 72px;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         animation: fadeIn 0.8s ease-out forwards;
         opacity: 0;
       }
 
       .hero {
         text-align: left;
-        margin-bottom: 80px;
+        margin-bottom: 120px;
       }
 
       .hero h1 {
@@ -128,7 +114,7 @@
       }
 
       .intro-section {
-        margin-bottom: 120px;
+        margin-bottom: 160px;
       }
 
       .intro-content {
@@ -151,84 +137,143 @@
       }
 
       .section-header {
-        margin-bottom: 32px;
+        margin-bottom: 24px;
       }
 
       .section-title {
-        font-size: 2rem;
-        font-weight: 400;
-        color: var(--text-primary);
-        letter-spacing: -0.02em;
-        text-align: left;
-      }
+      font-size: 1.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      letter-spacing: -0.015em;
+    }
 
       .skills-section {
-        margin-bottom: 120px;
+        margin-bottom: 160px;
       }
 
       .skills-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 1px;
-        background: var(--border-color);
-        border: 1px solid var(--border-color);
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 60px 40px;
+        border: none;
+        background: none;
       }
 
       .skill-item {
-        background: var(--bg-primary);
-        padding: 40px 28px;
+        background: none;
+        padding: 0;
         position: relative;
-        transition: background 0.3s ease;
-      }
-
-      .skill-item::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--accent-primary);
-        transition: width 0.4s ease;
-      }
-
-      .skill-item:hover::before {
-        width: 100%;
       }
 
       .skill-name {
-        font-size: 1.1rem;
-        font-weight: 600;
+        font-size: 1.15rem;
+        font-weight: 500;
         color: var(--text-primary);
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         letter-spacing: -0.01em;
       }
 
+
       .skill-index {
-        font-size: 0.7rem;
-        color: var(--text-secondary);
-        letter-spacing: 2px;
-        margin-bottom: 16px;
+        font-size: 0.65rem;
+        color: rgba(255,255,255,0.35);
+        letter-spacing: 3px;
+        margin-bottom: 14px;
       }
+
 
       .skill-desc {
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-        line-height: 1.6;
-        font-weight: 300;
+        font-size: 0.95rem;
+        color: rgba(255,255,255,0.6);
+        line-height: 1.7;
+        font-weight: 400;
       }
 
+      .interest-section {
+        margin-bottom: 160px;
+      }
+
+      .interest-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+        gap: 32px 32px; 
+        justify-items: start; 
+      }
+
+      .interest-logo-grid {
+        width: 10px;          /* matches Focus Area number size */
+        height: 10px;
+        border-radius: 2px;
+        background-color: var(--accent-primary);
+        flex-shrink: 0;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        will-change: transform, box-shadow;
+      }
+
+
+      .interest-item {
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 12px;          /* space between logo/title and description */
+        text-decoration: none;
+        color: rgba(255,255,255,0.9);
+
+        /* Fade-in animation */
+        opacity: 0;
+        transform: translateY(8px);
+        animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        animation-delay: calc(var(--i) * 0.1s); /* assign --i for each item */
+
+        /* Hover lift transition */
+        transition: transform 0.3s ease, opacity 0.6s ease;
+      }
+
+      .interest-item:hover {
+        transform: translateY(-2px); /* subtle lift on hover */
+      }
+
+      .interest-item:hover .interest-logo-grid {
+        transform: scale(1.2);  /* subtle logo scale */
+        box-shadow: 0 0 3px rgba(204, 255, 0, 0.5); /* gentle glow */
+        transition: transform 0.2s ease, box-shadow 0.2s ease; /* smooth scaling & glow */
+      }
+
+
+      .interest-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;           /* smaller gap between tiny grid & title */
+      }
+
+      .interest-header h3 {
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin: 0;
+        color: rgba(255,255,255,0.9); /* enforce color */
+      }
+
+      .interest-item p {
+        font-size: 0.95rem;
+        color: rgba(255,255,255,0.6);
+        line-height: 1.7;
+        margin: 0;
+      }
+
+
       .project-section {
-        margin-bottom: 120px;
+        margin-bottom: 160px;
       }
 
       .project-list {
         display: flex;
         flex-direction: column;
-        gap: 1px;
-        background: var(--border-color);
-        border: 1px solid var(--border-color);
+        gap: 48px;
+        border: none;
+        background: none;
       }
+
 
       .project-item {
         background: var(--bg-primary);
@@ -276,13 +321,14 @@
       }
 
       .empty-state {
-        background: var(--bg-primary);
-        padding: 60px 28px;
-        text-align: center;
-        color: var(--text-secondary);
-        font-size: 0.9rem;
-        font-weight: 300;
+        background: none;
+        padding: 0;
+        text-align: left;
+        color: rgba(255,255,255,0.5);
+        font-size: 0.95rem;
+        font-weight: 400;
       }
+
 
       .contact-section {
       }
@@ -339,12 +385,13 @@
       }
 
       .footer-cta {
-        margin-top: 120px;
+        margin-top: 40px;
+        margin-bottom: 80px;
         text-align: center;
       }
 
       .manifesto {
-        margin-top: 80px;
+        margin-top: 48px;
         font-size: 0.7rem;
         letter-spacing: 2px;
         text-transform: lowercase;
@@ -425,7 +472,9 @@
         .contact-grid {
           grid-template-columns: 1fr;
         }
-        
+        .interest-grid {
+          gap: 24px 20px;   
+        }
         .contact-icons-minimal {
           gap: 24px;
         }
@@ -474,7 +523,7 @@
 
       <section class="skills-section">
         <div class="section-header">
-          <h2 class="section-title">Interest</h2>
+          <h2 class="section-title">Focus Area</h2>
         </div>
         <div class="skills-grid">
           <div class="skill-item">
@@ -509,6 +558,50 @@
         </div>
       </section>
 
+      <section class="interest-section">
+        <div class="section-header">
+          <h2 class="section-title">Interest</h2>
+        </div>
+      
+        <div class="interest-grid">
+      
+          <a href="https://ethereum.org" class="interest-item" style="--i:0">
+            <div class="interest-header">
+              <div class="interest-logo-grid"></div>
+              <h3>Ethereum</h3>
+            </div>
+            <p>The foundational settlement layer. Credible neutrality, programmable value, and long-term systemic resilience.</p>
+          </a>
+      
+          <a href="https://hyperfoundation.org/" class="interest-item" style="--i:1">
+            <div class="interest-header">
+              <div class="interest-logo-grid"></div>
+              <h3>Hyperliquid</h3>
+            </div>
+            <p>On-chain perpetual markets executed with speed and precision — capital efficiency without custodial compromise.</p>
+          </a>
+      
+          <a href="https://solana.com" class="interest-item" style="--i:2">
+            <div class="interest-header">
+              <div class="interest-logo-grid"></div>
+              <h3>Solana</h3>
+            </div>
+            <p>High-throughput architecture focused on performance, scalability, and composable application layers.</p>
+          </a>
+      
+          <a href="https://layerzero.network" class="interest-item" style="--i:3">
+            <div class="interest-header">
+              <div class="interest-logo-grid"></div>
+              <h3>LayerZero</h3>
+            </div>
+            <p>Cross-chain messaging infrastructure enabling unified liquidity and interoperable ecosystems.</p>
+          </a>
+      
+        </div>
+      </section>
+      
+      
+
       <section class="project-section">
         <div class="section-header">
           <h2 class="section-title">Project Under Development</h2>
@@ -519,6 +612,14 @@
             quietly as it matures.
           </div>
         </div>
+      </section>
+
+      <section class="footer-cta">
+        <p class="cta-text">
+          For those building at the edge — aligned conversations are always
+          welcome.
+        </p>
+        <a href="mailto:[email protected]" class="cta-button">start a conversation</a>
       </section>
 
     <section class="contact-section">
@@ -546,13 +647,6 @@
         </div>
       </section>
 
-      <section class="footer-cta">
-        <p class="cta-text">
-          For those building at the edge — aligned conversations are always
-          welcome.
-        </p>
-        <a href="mailto:[email protected]" class="cta-button">start a conversation</a>
-      </section>
 
       <div class="manifesto">less talk. more building.</div>
     </div>
