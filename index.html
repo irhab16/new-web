@@ -1,678 +1,655 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Irhab Zulirfan</title>
-
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Space+Grotesk:wght@500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-
-  <!-- Standard Favicons -->
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-
-  <!-- Apple iOS -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-
-  <!-- Android / PWA -->
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-512x512.png">
-
-
-
   <style>
-      :root {
-        --bg-primary: #000000;
-        --bg-secondary: #0a0a0a;
-        --accent-primary: #ccff00;
-        --accent-secondary: #6b7280;
-        --text-primary: #ffffff;
-        --text-secondary: #a0a0a0;
-        --card-bg: rgba(15, 15, 15, 0.6);
-        --border-color: rgba(255, 255, 255, 0.06);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: 'Inter', sans-serif;
-        font-weight: 300;
-        line-height: 1.75;
-        color: var(--text-primary);
-        background: var(--bg-primary);
-        overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
-        scroll-behavior: smooth;
-      }
-
-      .background-animation {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        overflow: hidden;
-        pointer-events: none;
-      }
-
-      .blockchain-grid {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background:
-          radial-gradient(
-            ellipse 1200px 800px at 50% -10%,
-            rgba(255,255,255,0.03) 0%,
-            transparent 60%
-          );
-        opacity: 0.25; /* softens the effect */
-        animation: subtleShift 60s linear infinite;
-      }
-
-      .container {
-        position: relative;
-        z-index: 1;
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 120px 40px 72px;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        animation: fadeIn 0.8s ease-out forwards;
-        opacity: 0;
-      }
-
-      .hero {
-        text-align: left;
-        margin-bottom: 120px;
-      }
-
-      .hero h1 {
-        font-family: 'Space Grotesk', sans-serif;
-        font-weight: 500; /* medium */
-        font-size: 4rem;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-        color: var(--text-primary);
-        margin-bottom: 24px;
-      }
-
-      .hero h1 strong {
-        font-weight: 600; /* semi-bold for emphasis */
-      }
-
-      .accent {
-        color: var(--accent-primary);
-        text-shadow: 0 0 10px rgba(204, 255, 0, 0.35);
-        font-weight: 500;
-      }
-
-      .hero-tagline {
-        font-size: 1.2rem;
-        color: var(--text-secondary);
-        max-width: 600px;
-        margin-bottom: 40px;
-        font-weight: 400;
-      }
-
-      .intro-section {
-        margin-bottom: 160px;
-      }
-
-      .intro-content {
-        max-width: 700px;
-        padding: 40px 0;
-        border-top: 1px solid var(--border-color);
-        border-bottom: 1px solid var(--border-color);
-      }
-
-      .intro-text {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: var(--text-secondary);
-        font-weight: 300;
-      }
-
-      .intro-text strong {
-        color: var(--text-primary);
-        font-weight: 600;
-      }
-
-      .section-header {
-        margin-bottom: 24px;
-      }
-
-      .section-title {
-        font-family: 'Space Grotesk', sans-serif;
-        font-weight: 500;
-        font-size: 1.9rem;
-        letter-spacing: -0.015em;
-        color: var(--text-primary);
-      }
-
-      .skills-section {
-        margin-bottom: 160px;
-      }
-
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 60px 40px;
-        border: none;
-        background: none;
-      }
-
-      .skill-item {
-        background: none;
-        padding: 0;
-        position: relative;
-      }
-
-      .skill-name {
-        font-size: 1.15rem;
-        font-weight: 500;
-        color: var(--text-primary);
-        margin-bottom: 10px;
-        letter-spacing: -0.01em;
-      }
-
-
-      .skill-index {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.65rem;
-        letter-spacing: 2px;
-        color: rgba(255,255,255,0.18);
-        font-weight: 400;
-        margin-bottom: 10px;
-      }
-
-
-      .skill-desc {
-        font-size: 0.92rem;
-        color: rgba(255,255,255,0.6);
-        line-height: 1.65;
-        font-weight: 400;
-      }
-
-      .interest-section {
-        margin-bottom: 160px;
-      }
-
-      .interest-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
-        gap: 32px 32px; 
-        justify-items: start; 
-      }
-
-      .interest-logo-grid {
-        width: 10px;          /* matches Focus Area number size */
-        height: 10px;
-        border-radius: 2px;
-        background-color: var(--accent-primary);
-        flex-shrink: 0;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        will-change: transform, box-shadow;
-      }
-
-
-      .interest-item {
-        display: flex;
-        align-items: start;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 12px;          /* space between logo/title and description */
-        text-decoration: none;
-        color: rgba(255,255,255,0.9);
-
-        /* Fade-in animation */
-        opacity: 0;
-        transform: translateY(4px);
-        animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        animation-delay: calc(var(--i) * 0.1s); /* assign --i for each item */
-
-        /* Hover lift transition */
-        transition: transform 0.3s ease, opacity 0.6s ease;
-      }
-
-      .interest-item:hover {
-        transform: translateY(-2px); /* subtle lift on hover */
-      }
-
-      .interest-item:hover .interest-logo-grid {
-        transform: scale(1.15);  /* subtle logo scale */
-        box-shadow: 0 0 3px rgba(204, 255, 0, 0.5); /* gentle glow */
-        transition: transform 0.2s ease, box-shadow 0.2s ease; /* smooth scaling & glow */
-      }
-
-
-      .interest-header {
-        display: flex;
-        align-items: center;
-        gap: 8px;           /* smaller gap between tiny grid & title */
-      }
-
-      .interest-header h3 {
-        font-size: 1.1rem;
-        font-weight: 500;
-        margin: 0;
-        color: rgba(255,255,255,0.9); /* enforce color */
-      }
-
-      .interest-item p {
-        font-size: 0.95rem;
-        color: rgba(255,255,255,0.6);
-        line-height: 1.7;
-        margin: 0;
-      }
-
-
-      .project-section {
-        margin-bottom: 160px;
-      }
-
-      .project-list {
-        display: flex;
-        flex-direction: column;
-        gap: 48px;
-        border: none;
-        background: none;
-      }
-
-
-      .project-item {
-        background: var(--bg-primary);
-        padding: 32px 28px;
-        text-decoration: none;
-        color: var(--text-primary);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-      }
-
-      .project-item::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--accent-primary);
-        transition: width 0.4s ease;
-      }
-
-      .project-item:hover::before {
-        width: 100%;
-      }
-
-      .project-info {
-        flex: 1;
-      }
-
-      .project-title {
-        font-size: 1.1rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 8px;
-        letter-spacing: -0.01em;
-      }
-
-      .project-desc {
-        font-size: 0.9rem;
-        color: var(--text-secondary);
-        line-height: 1.6;
-        font-weight: 300;
-      }
-
-      .empty-state {
-        background: none;
-        padding: 0;
-        text-align: left;
-        color: rgba(255,255,255,0.5);
-        font-size: 0.95rem;
-        font-weight: 400;
-      }
-
-
-      .contact-section {
-      }
-
-      .contact-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1px;
-        background: var(--border-color);
-        border: 1px solid var(--border-color);
-      }
-
-      .contact-item {
-        background: var(--bg-primary);
-        padding: 28px 24px;
-        text-decoration: none;
-        color: var(--text-primary);
-        position: relative;
-      }
-
-      .contact-item::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--accent-primary);
-        transition: width 0.4s ease;
-      }
-
-      .contact-item:hover::before {
-        width: 100%;
-      }
-
-      .contact-item:hover .contact-value {
-        color: var(--accent-primary);
-        transition: color 0.3s ease;
-      }
-
-      .contact-label {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.65rem;
-        letter-spacing: 2px;
-        color: var(--text-secondary);
-        font-weight: 500;
-        text-transform: lowercase;
-        margin-bottom: 8px;
-      }
-
-      .contact-value {
-        font-size: 0.95rem;
-        color: var(--text-primary);
-        font-weight: 500;
-      }
-
-      .footer-cta {
-        margin-top: 40px;
-        margin-bottom: 80px;
-        text-align: center;
-      }
-
-      .manifesto {
-        margin-top: 48px;
-        font-size: 0.7rem;
-        letter-spacing: 2px;
-        text-transform: lowercase;
-        color: rgba(255, 255, 255, 0.25);
-        text-align: center;
-      }
-
-      .cta-text {
-        font-size: 1rem;
-        color: var(--text-secondary);
-        margin-bottom: 24px;
-        font-weight: 300;
-      }
-
-      .cta-button {
-        display: inline-block;
-        background: transparent;
-        color: var(--accent-primary);
-        font-weight: 500;
-        font-size: 0.9rem;
-        padding: 16px 40px;
-        text-decoration: none;
-        text-transform: lowercase;
-        letter-spacing: 1px;
-        border: 1px solid var(--border-color);
-        transition: all 0.3s ease;
-      }
-
-      .cta-button:hover {
-        border-color: var(--accent-primary);
-        box-shadow: 0 0 20px rgba(204, 255, 0, 0.15);
-      }
-
-/* ========== CONNECT SECTION - MINIMAL ========== */
-      .contact-icons-minimal {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 32px;
-        margin-bottom: 40px;
-      }
-
-      .contact-icon-link {
-        display: inline-flex;
-        align-items: center;
-        justify-content: flex-start;
-        width: 44px;
-        height: 44px;
-        text-decoration: none;
-        transition: all 0.3s ease;
-      }
-
-      .contact-icon-link svg {
-        width: 24px;
-        height: 24px;
-        stroke: var(--text-primary);
-        stroke-width: 1.5;
-        fill: none;
-        transition: all 0.3s ease;
-      }
-
-      .contact-icon-link:hover svg {
-        stroke: var(--accent-primary);
-        filter: drop-shadow(0 0 8px rgba(204, 255, 0, 0.4));
-      }
-
-      @media (max-width: 768px) {
-        .container {
-          padding: 60px 20px;
-        }
-        .hero h1 {
-          font-size: 2.5rem; /* responsive scaling */
-        }
-        .section-title {
-          font-size: 2.2rem;
-        }
-        .blockchain-grid {
-          animation: none; /* stops background motion on small screens */
-        }
-        .skills-grid,
-        .contact-grid {
-          grid-template-columns: 1fr;
-        }
-        .interest-grid {
-          gap: 24px 20px;   
-        }
-        .contact-icons-minimal {
-          gap: 24px;
-        }
-      }
-
-      @keyframes fadeIn {
-       from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes subtleShift {
-        0% { transform: translate(0,0) scale(1); }
-        50% { transform: translate(-20px, 10px) scale(1.02); }
-        100% { transform: translate(0,0) scale(1); }
-      }
-
-    </style>
-  </head>
-  <body>
-    <div class="background-animation">
-      <div class="blockchain-grid"></div>
-    </div>
-
-    <div class="container">
-      <section class="hero">
-        <h1>
-          Exploring the intersection of tech and
-          <span class="accent">blockchain</span>
-        </h1>
-        <p class="hero-tagline">
-          A quiet exploration of how decentralized systems reshape power, trust,
-          and value.
+    :root {
+      --bg: #000;
+      --accent: #ccff00;
+      --text: #fff;
+      --muted: #a0a0a0;
+      --border: rgba(255,255,255,0.06);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* GRAIN */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 160px 160px;
+      opacity: 0.035;
+      mix-blend-mode: overlay;
+    }
+
+    /* SCROLL PROGRESS */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      width: 0%; height: 2px;
+      background: var(--accent);
+      z-index: 200;
+      box-shadow: 0 0 8px rgba(204,255,0,0.5);
+    }
+
+    /* LANG TOGGLE */
+    .lang-toggle {
+      position: fixed;
+      top: 28px; right: 40px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    .lang-btn {
+      background: none; border: none;
+      cursor: pointer; padding: 2px 0;
+      font-family: inherit; font-size: inherit;
+      letter-spacing: inherit; text-transform: inherit;
+      color: rgba(255,255,255,0.22);
+      transition: color 0.25s ease;
+    }
+    .lang-btn:hover  { color: rgba(255,255,255,0.5); }
+    .lang-btn.active { color: rgba(255,255,255,0.75); }
+    .lang-divider { color: rgba(255,255,255,0.12); font-size: 0.55rem; }
+
+    /* BG GLOW */
+    .bg-glow {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background: radial-gradient(ellipse 1200px 800px at 50% -10%, rgba(255,255,255,0.03) 0%, transparent 60%);
+      opacity: 0.25;
+      animation: subtleShift 60s linear infinite;
+    }
+
+    /* CURSOR GLOW */
+    .cursor-glow {
+      pointer-events: none; position: fixed;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(204,255,0,0.04) 0%, transparent 70%);
+      transform: translate(-50%,-50%);
+      z-index: 0; opacity: 0; transition: opacity 0.4s ease;
+    }
+
+    /* CONTAINER */
+    .container {
+      position: relative; z-index: 1;
+      max-width: 1100px; margin: 0 auto;
+      padding: 120px 40px 72px;
+      display: flex; flex-direction: column;
+      opacity: 0;
+      animation: fadeInPage 0.9s cubic-bezier(0.22,1,0.36,1) 0.1s forwards;
+    }
+
+    /* HERO */
+    .hero { margin-bottom: 120px; }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500; font-size: 4rem;
+      line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 24px;
+    }
+
+    .accent { color: var(--accent); text-shadow: 0 0 10px rgba(204,255,0,0.35); }
+
+    .hero-tagline { font-size: 1.2rem; color: var(--muted); max-width: 600px; font-weight: 400; }
+
+    /* INTRO */
+    .intro-section { margin-bottom: 160px; }
+
+    .intro-content {
+      max-width: 700px; padding: 40px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .intro-text { font-size: 1.1rem; line-height: 1.8; color: var(--muted); }
+    .intro-text strong { color: var(--text); font-weight: 600; }
+
+    /* SECTIONS */
+    .section-header { margin-bottom: 24px; }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500; font-size: 1.9rem; letter-spacing: -0.015em;
+    }
+
+    /* SKILLS */
+    .skills-section { margin-bottom: 160px; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 60px 40px;
+    }
+
+    .skill-index {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 2px;
+      color: rgba(255,255,255,0.18); margin-bottom: 10px;
+    }
+
+    .skill-name { font-size: 1.15rem; font-weight: 500; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .skill-desc { font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+    /* INTEREST */
+    .interest-section { margin-bottom: 160px; }
+
+    .interest-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 32px;
+    }
+
+    .interest-logo {
+      width: 10px; height: 10px; border-radius: 2px;
+      background: var(--accent); flex-shrink: 0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .interest-item {
+      display: flex; flex-direction: column; gap: 12px;
+      text-decoration: none; color: rgba(255,255,255,0.9);
+      opacity: 0; transform: translateY(8px);
+      animation: slideUp 0.55s cubic-bezier(0.22,1,0.36,1) forwards;
+      animation-delay: calc(0.8s + var(--i) * 0.08s);
+      transition: transform 0.3s ease;
+    }
+
+    .interest-item:hover { transform: translateY(-2px); }
+    .interest-item:hover .interest-logo { transform: scale(1.15); box-shadow: 0 0 3px rgba(204,255,0,0.5); }
+    .interest-header { display: flex; align-items: center; gap: 8px; }
+    .interest-header h3 { font-size: 1.1rem; font-weight: 500; margin: 0; }
+    .interest-item p { font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin: 0; }
+
+    /* READING LIST */
+    .reading-section { margin-bottom: 160px; }
+
+    .reading-list {
+      display: flex; flex-direction: column;
+      border-top: 1px solid var(--border);
+    }
+
+    .reading-item {
+      display: flex; align-items: baseline;
+      justify-content: space-between; gap: 24px;
+      padding: 20px 0; padding-left: 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none; color: var(--text);
+      position: relative; overflow: hidden;
+      transition: padding-left 0.3s ease;
+    }
+
+    .reading-item::before {
+      content: ''; position: absolute;
+      left: 0; top: 50%; transform: translateY(-50%);
+      width: 2px; height: 0%;
+      background: var(--accent); transition: height 0.3s ease;
+    }
+
+    .reading-item:hover { padding-left: 14px; }
+    .reading-item:hover::before { height: 55%; }
+    .reading-item:hover .reading-title { color: #fff; }
+    .reading-item:hover .reading-source { color: var(--accent); }
+    .reading-item:hover .reading-arrow { color: rgba(255,255,255,0.5); transform: translate(2px,-2px); }
+
+    .reading-left { display: flex; align-items: baseline; gap: 14px; flex: 1; min-width: 0; }
+
+    .reading-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 1.5px;
+      color: rgba(255,255,255,0.2); flex-shrink: 0;
+    }
+
+    .reading-title {
+      font-size: 0.95rem; font-weight: 400;
+      color: rgba(255,255,255,0.7); line-height: 1.5;
+      transition: color 0.3s ease;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    .reading-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
+    .reading-source {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 1px;
+      color: rgba(255,255,255,0.25); text-transform: lowercase;
+      transition: color 0.3s ease;
+    }
+
+    .reading-arrow {
+      font-size: 0.75rem; color: rgba(255,255,255,0.2);
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    /* PROJECTS */
+    .project-section { margin-bottom: 160px; }
+    .empty-state { color: rgba(255,255,255,0.5); font-size: 0.95rem; }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      margin-bottom: 80px;
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .disclaimer-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,0.25);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .disclaimer-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .disclaimer-text strong {
+      color: rgba(255,255,255,0.95);
+      font-weight: 600;
+    }
+
+    /* LANG SWITCHING — span pairs */
+    .lang-id, .lang-en { display: inline; }
+    html[lang="en"] .lang-id { display: none; }
+    html[lang="id"] .lang-en { display: none; }
+
+    /* FOOTER CTA */
+    .footer-cta { margin-bottom: 80px; text-align: center; }
+
+    .cta-text { font-size: 1rem; color: var(--muted); margin-bottom: 24px; font-weight: 300; }
+
+    .cta-button {
+      display: inline-block; background: transparent;
+      color: var(--accent); font-weight: 500; font-size: 0.9rem;
+      padding: 16px 40px; text-decoration: none;
+      text-transform: lowercase; letter-spacing: 1px;
+      border: 1px solid var(--border);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .cta-button:hover { border-color: var(--accent); box-shadow: 0 0 20px rgba(204,255,0,0.15); }
+
+    /* CONNECT */
+    .contact-icons { display: flex; align-items: center; gap: 32px; margin-bottom: 40px; }
+
+    .contact-icon-link {
+      display: inline-flex; align-items: center;
+      width: 44px; height: 44px; text-decoration: none;
+    }
+
+    .contact-icon-link svg {
+      width: 24px; height: 24px;
+      stroke: var(--text); stroke-width: 1.5; fill: none;
+      transition: all 0.3s ease;
+    }
+
+    .contact-icon-link:hover svg {
+      stroke: var(--accent);
+      filter: drop-shadow(0 0 8px rgba(204,255,0,0.4));
+    }
+
+    /* MANIFESTO */
+    .manifesto {
+      margin-top: 48px; font-size: 0.7rem;
+      letter-spacing: 2px; text-transform: lowercase;
+      color: rgba(255,255,255,0.25); text-align: center;
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.65s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .container { padding: 80px 24px 60px; }
+      .hero h1 { font-size: 2.4rem; }
+      .section-title { font-size: 1.6rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .lang-toggle { top: 20px; right: 24px; }
+      .reading-title { white-space: normal; }
+      .reading-right { display: none; }
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes subtleShift {
+      0%   { transform: translate(0,0) scale(1); }
+      50%  { transform: translate(-20px,10px) scale(1.02); }
+      100% { transform: translate(0,0) scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <div class="bg-glow"></div>
+
+  <nav class="lang-toggle">
+    <button class="lang-btn" id="btn-id" onclick="setLang('id')">ID</button>
+    <span class="lang-divider">/</span>
+    <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+  </nav>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>
+        <span class="lang-en">Exploring the intersection of tech and <span class="accent">blockchain</span></span>
+        <span class="lang-id">Menjelajahi titik temu antara teknologi dan <span class="accent">blockchain</span></span>
+      </h1>
+      <p class="hero-tagline">
+        <span class="lang-en">A quiet exploration of how decentralized systems reshape power, trust, and value.</span>
+        <span class="lang-id">Eksplorasi pelan tentang bagaimana sistem terdesentralisasi mengubah cara kita melihat kekuasaan, kepercayaan, dan nilai.</span>
+      </p>
+    </section>
+
+    <!-- INTRO -->
+    <section class="intro-section">
+      <div class="intro-content reveal">
+        <p class="intro-text">
+          <span class="lang-en">Hi, I'm <strong>Irhab Zulirfan</strong>. Drawn to systems that reduce blind trust and expand individual sovereignty. Learning in public, building in fragments — moving steadily from curiosity toward contribution within the decentralized frontier.</span>
+          <span class="lang-id">Hei, saya <strong>Irhab Zulirfan</strong>. Tertarik sama sistem yang ngurangin kepercayaan buta dan memperluas kedaulatan individu. Belajar secara terbuka, membangun pelan-pelan — bergerak dari rasa penasaran menuju kontribusi nyata di dunia desentralisasi.</span>
         </p>
-      </section>
+      </div>
+    </section>
 
-      <section class="intro-section">
-        <div class="intro-content">
-          <p class="intro-text">
-            Hi, I'm <strong>Irhab Zulirfan</strong>. Drawn to systems that
-            reduce blind trust and expand individual sovereignty. Learning in
-            public, building in fragments — moving steadily from curiosity
-            toward contribution within the decentralized frontier.
+    <!-- FOCUS AREA -->
+    <section class="skills-section">
+      <div class="section-header reveal">
+        <h2 class="section-title">
+          <span class="lang-en">Focus Area</span>
+          <span class="lang-id">Area Fokus</span>
+        </h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-item reveal">
+          <div class="skill-index">01</div>
+          <div class="skill-name">Blockchain</div>
+          <div class="skill-desc">
+            <span class="lang-en">Decentralized systems & smart contracts</span>
+            <span class="lang-id">Sistem terdesentralisasi & smart contract</span>
+          </div>
+        </div>
+        <div class="skill-item reveal">
+          <div class="skill-index">02</div>
+          <div class="skill-name">Crypto Investment</div>
+          <div class="skill-desc">
+            <span class="lang-en">Market research, on-chain analysis & long-term conviction plays</span>
+            <span class="lang-id">Riset pasar, analisis on-chain & investasi berbasis keyakinan jangka panjang</span>
+          </div>
+        </div>
+        <div class="skill-item reveal">
+          <div class="skill-index">03</div>
+          <div class="skill-name">Web3</div>
+          <div class="skill-desc">
+            <span class="lang-en">Protocols, dApps & decentralized application layers</span>
+            <span class="lang-id">Protokol, dApp & layer aplikasi terdesentralisasi</span>
+          </div>
+        </div>
+        <div class="skill-item reveal">
+          <div class="skill-index">04</div>
+          <div class="skill-name">
+            <span class="lang-en">Innovation</span>
+            <span class="lang-id">Inovasi</span>
+          </div>
+          <div class="skill-desc">
+            <span class="lang-en">Exploring new models of trust, coordination & digital sovereignty</span>
+            <span class="lang-id">Mengeksplorasi model baru kepercayaan, koordinasi & kedaulatan digital</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTEREST -->
+    <section class="interest-section">
+      <div class="section-header reveal">
+        <h2 class="section-title">
+          <span class="lang-en">Interest</span>
+          <span class="lang-id">Minat</span>
+        </h2>
+      </div>
+      <div class="interest-grid">
+
+        <a href="https://ethereum.org" class="interest-item" style="--i:0" target="_blank" rel="noopener noreferrer">
+          <div class="interest-header"><div class="interest-logo"></div><h3>Ethereum</h3></div>
+          <p>
+            <span class="lang-en">The foundational settlement layer. Credible neutrality, programmable value, and long-term systemic resilience.</span>
+            <span class="lang-id">Layer settlement paling kredibel. Netralitas yang terjaga, nilai yang bisa diprogram, dan ketahanan sistem jangka panjang.</span>
           </p>
-        </div>
-      </section>
+        </a>
 
-      <section class="skills-section">
-        <div class="section-header">
-          <h2 class="section-title">Focus Area</h2>
-        </div>
-        <div class="skills-grid">
-          <div class="skill-item">
-            <div class="skill-index">01</div>
-            <div class="skill-name">Blockchain</div>
-            <div class="skill-desc">
-              Decentralized systems & smart contracts
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-index">02</div>
-            <div class="skill-name">Crypto Investment</div>
-            <div class="skill-desc">
-              Market research, on-chain analysis & long-term conviction plays
-            </div>
-          </div>
-          <div class="skill-item">
-            <div class="skill-index">03</div>
-            <div class="skill-name">Web3</div>
-            <div class="skill-desc">
-              Protocols, dApps & decentralized application layers
-            </div>
-          </div>
+        <a href="https://hyperfoundation.org/" class="interest-item" style="--i:1" target="_blank" rel="noopener noreferrer">
+          <div class="interest-header"><div class="interest-logo"></div><h3>Hyperliquid</h3></div>
+          <p>
+            <span class="lang-en">On-chain perpetual markets executed with speed and precision — capital efficiency without custodial compromise.</span>
+            <span class="lang-id">Pasar perpetual on-chain yang cepat dan presisi — efisiensi modal tanpa kompromi kustodial.</span>
+          </p>
+        </a>
 
-          <div class="skill-item">
-            <div class="skill-index">04</div>
-            <div class="skill-name">Innovation</div>
-            <div class="skill-desc">
-              Exploring new models of trust, coordination & digital sovereignty
-            </div>
+        <a href="https://solana.com" class="interest-item" style="--i:2" target="_blank" rel="noopener noreferrer">
+          <div class="interest-header"><div class="interest-logo"></div><h3>Solana</h3></div>
+          <p>
+            <span class="lang-en">High-throughput architecture focused on performance, scalability, and composable application layers.</span>
+            <span class="lang-id">Arsitektur high-throughput yang fokus pada performa, skalabilitas, dan layer aplikasi yang composable.</span>
+          </p>
+        </a>
+
+        <a href="https://layerzero.network" class="interest-item" style="--i:3" target="_blank" rel="noopener noreferrer">
+          <div class="interest-header"><div class="interest-logo"></div><h3>LayerZero</h3></div>
+          <p>
+            <span class="lang-en">Cross-chain messaging infrastructure enabling unified liquidity and interoperable ecosystems.</span>
+            <span class="lang-id">Infrastruktur messaging cross-chain yang memungkinkan likuiditas terpadu dan ekosistem yang saling terhubung.</span>
+          </p>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- READING LIST -->
+    <section class="reading-section">
+      <div class="section-header reveal">
+        <h2 class="section-title">
+          <span class="lang-en">Currently Reading</span>
+          <span class="lang-id">Sedang Dibaca</span>
+        </h2>
+      </div>
+      <div class="reading-list reveal">
+
+        <a class="reading-item" href="https://www.hyperliquidr.xyz/post/what-actually-broke-hype-and-what-changes-from-here" target="_blank" rel="noopener noreferrer">
+          <div class="reading-left">
+            <span class="reading-num">01</span>
+            <span class="reading-title">
+              <span class="lang-en">What Actually Broke HYPE — and What Changes From Here</span>
+              <span class="lang-id">Apa yang sebenarnya rusak di HYPE — dan apa yang berubah dari sini</span>
+            </span>
           </div>
-        </div>
-      </section>
-
-      <section class="interest-section">
-        <div class="section-header">
-          <h2 class="section-title">Interest</h2>
-        </div>
-      
-        <div class="interest-grid">
-      
-          <a href="https://ethereum.org" class="interest-item" style="--i:0">
-            <div class="interest-header">
-              <div class="interest-logo-grid"></div>
-              <h3>Ethereum</h3>
-            </div>
-            <p>The foundational settlement layer. Credible neutrality, programmable value, and long-term systemic resilience.</p>
-          </a>
-      
-          <a href="https://hyperfoundation.org/" class="interest-item" style="--i:1">
-            <div class="interest-header">
-              <div class="interest-logo-grid"></div>
-              <h3>Hyperliquid</h3>
-            </div>
-            <p>On-chain perpetual markets executed with speed and precision — capital efficiency without custodial compromise.</p>
-          </a>
-      
-          <a href="https://solana.com" class="interest-item" style="--i:2">
-            <div class="interest-header">
-              <div class="interest-logo-grid"></div>
-              <h3>Solana</h3>
-            </div>
-            <p>High-throughput architecture focused on performance, scalability, and composable application layers.</p>
-          </a>
-      
-          <a href="https://layerzero.network" class="interest-item" style="--i:3">
-            <div class="interest-header">
-              <div class="interest-logo-grid"></div>
-              <h3>LayerZero</h3>
-            </div>
-            <p>Cross-chain messaging infrastructure enabling unified liquidity and interoperable ecosystems.</p>
-          </a>
-      
-        </div>
-      </section>
-      
-      
-
-      <section class="project-section">
-        <div class="section-header">
-          <h2 class="section-title">Project Under Development</h2>
-        </div>
-        <div class="project-list">
-          <div class="empty-state">
-            Early-stage experiments in progress. Select work will surface
-            quietly as it matures.
+          <div class="reading-right">
+            <span class="reading-source">hyperliquidr.xyz</span>
+            <span class="reading-arrow">↗</span>
           </div>
-        </div>
-      </section>
+        </a>
 
-      <section class="footer-cta">
-        <p class="cta-text">
-          For those building at the edge — aligned conversations are always
-          welcome.
+        <a class="reading-item" href="https://x.com/shaundadevens/status/2019782009267085656?s=20" target="_blank" rel="noopener noreferrer">
+          <div class="reading-left">
+            <span class="reading-num">02</span>
+            <span class="reading-title">
+              <span class="lang-en">Thread: A perspective worth sitting with this cycle</span>
+              <span class="lang-id">Thread: Perspektif yang layak direnungkan di siklus ini</span>
+            </span>
+          </div>
+          <div class="reading-right">
+            <span class="reading-source">@shaundadevens</span>
+            <span class="reading-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="reading-item" href="https://layerzero.network/blog/zero-the-decentralized-multi-core-world-computer" target="_blank" rel="noopener noreferrer">
+          <div class="reading-left">
+            <span class="reading-num">03</span>
+            <span class="reading-title">
+              <span class="lang-en">Zero: The Decentralized Multi-Core World Computer</span>
+              <span class="lang-id">Zero: Komputer Dunia Multi-Core yang Terdesentralisasi</span>
+            </span>
+          </div>
+          <div class="reading-right">
+            <span class="reading-source">layerzero.network</span>
+            <span class="reading-arrow">↗</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="project-section">
+      <div class="section-header reveal">
+        <h2 class="section-title">
+          <span class="lang-en">Project Under Development</span>
+          <span class="lang-id">Project dalam Pengembangan</span>
+        </h2>
+      </div>
+      <div class="reveal">
+        <p class="empty-state">
+          <span class="lang-en">Early-stage experiments in progress. Select work will surface quietly as it matures.</span>
+          <span class="lang-id">Eksperimen awal sedang berjalan. Beberapa karya akan muncul pelan-pelan seiring kematangannya.</span>
         </p>
-        <a href="mailto:[email protected]" class="cta-button">start a conversation</a>
-      </section>
+      </div>
+    </section>
 
-    <section class="contact-section">
-        <div class="section-header">
-          <h2 class="section-title">Connect</h2>
-        </div>
-        <div class="contact-icons-minimal">
-          <a href="mailto:[email protected]" class="contact-icon-link" title="Email">
-            <svg viewBox="0 0 24 24">
-              <path d="M3 8l9 6 9-6M3 8v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8M3 8l9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-
-          <a href="https://github.com/irhab16" class="contact-icon-link" target="_blank" rel="noopener noreferrer" title="GitHub">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.891 1.529 2.341 1.544 2.914 1.186.09-.924.349-1.544.636-1.9-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-
-          <a href="https://x.com/irhabzulirfan" class="contact-icon-link" target="_blank" rel="noopener noreferrer" title="X">
-            <svg viewBox="0 0 24 24">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.209-6.817-5.974 6.817H2.882l7.704-8.794-8.16-10.706h6.823l4.714 6.233 5.435-6.233zM16.744 20.75h1.828L6.122 3.75H4.2l12.544 17z" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
-        </div>
-      </section>
-
-
-      <div class="manifesto">less talk. more building.</div>
+    <!-- DISCLAIMER — language toggled -->
+    <div class="disclaimer reveal">
+      <div class="disclaimer-label">disclaimer</div>
+      <p class="disclaimer-text">
+        <span class="lang-en"><strong>DYOR.</strong> This site is for informational purposes only. Nothing here constitutes financial, investment, or legal advice. <strong>Always do your own research.</strong></span>
+        <span class="lang-id"><strong>DYOR.</strong> Situs ini hanya untuk tujuan informasi. Tidak ada yang di sini merupakan saran keuangan, investasi, atau hukum. <strong>Lakukan risetmu sendiri.</strong></span>
+      </p>
     </div>
-  </body>
+
+    <!-- CTA — always English -->
+    <section class="footer-cta reveal">
+      <p class="cta-text">For those building at the edge — aligned conversations are always welcome.</p>
+      <a href="mailto:[email protected]" class="cta-button">start a conversation</a>
+    </section>
+
+    <!-- CONNECT -->
+    <section>
+      <div class="section-header reveal">
+        <h2 class="section-title">
+          <span class="lang-en">Connect</span>
+          <span class="lang-id">Terhubung</span>
+        </h2>
+      </div>
+      <div class="contact-icons">
+        <a href="mailto:[email protected]" class="contact-icon-link" title="Email">
+          <svg viewBox="0 0 24 24"><path d="M3 8l9 6 9-6M3 8v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8M3 8l9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://github.com/irhab16" class="contact-icon-link" target="_blank" rel="noopener noreferrer" title="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.891 1.529 2.341 1.544 2.914 1.186.09-.924.349-1.544.636-1.9-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://x.com/irhabzulirfan" class="contact-icon-link" target="_blank" rel="noopener noreferrer" title="X">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.657l-5.209-6.817-5.974 6.817H2.882l7.704-8.794-8.16-10.706h6.823l4.714 6.233 5.435-6.233zM16.744 20.75h1.828L6.122 3.75H4.2l12.544 17z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- MANIFESTO — always English -->
+    <div class="manifesto">less talk. more building.</div>
+
+  </div>
+
+  <script>
+    /* LANG — CSS class toggle, no innerHTML injection */
+    let currentLang = 'en';
+
+    function setLang(lang) {
+      if (lang === currentLang) return;
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.getElementById('btn-id').classList.toggle('active', lang === 'id');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    }
+
+    /* Init */
+    document.getElementById('btn-en').classList.add('active');
+
+    /* SCROLL PROGRESS */
+    const bar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + '%';
+    }, { passive: true });
+
+    /* SCROLL REVEAL */
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const siblings = [...e.target.parentElement.querySelectorAll('.reveal')];
+        e.target.style.transitionDelay = (siblings.indexOf(e.target) * 0.05) + 's';
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    /* CURSOR GLOW */
+    const glow = document.getElementById('cursorGlow');
+    if (window.matchMedia('(pointer: fine)').matches) {
+      let on = false;
+      document.addEventListener('mousemove', e => {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top  = e.clientY + 'px';
+        if (!on) { glow.style.opacity = '1'; on = true; }
+      });
+      document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; on = false; });
+    }
+  </script>
+</body>
 </html>
