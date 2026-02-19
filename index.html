@@ -8,7 +8,7 @@
   <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Space+Grotesk:wght@500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
   <!-- Standard Favicons -->
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
@@ -43,13 +43,13 @@
 
       body {
         font-family: 'Inter', sans-serif;
-        background: var(--bg-primary);
+        font-weight: 300;
+        line-height: 1.75;
         color: var(--text-primary);
+        background: var(--bg-primary);
         overflow-x: hidden;
-        line-height: 1.6;
         -webkit-font-smoothing: antialiased;
         scroll-behavior: smooth;
-
       }
 
       .background-animation {
@@ -95,21 +95,23 @@
       }
 
       .hero h1 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 500; /* medium */
         font-size: 4rem;
-        font-weight: 300;
         line-height: 1.1;
-        margin-bottom: 24px;
-        color: var(--text-primary);
         letter-spacing: -0.02em;
+        color: var(--text-primary);
+        margin-bottom: 24px;
       }
 
       .hero h1 strong {
-        font-weight: 600;
+        font-weight: 600; /* semi-bold for emphasis */
       }
 
       .accent {
         color: var(--accent-primary);
         text-shadow: 0 0 10px rgba(204, 255, 0, 0.35);
+        font-weight: 500;
       }
 
       .hero-tagline {
@@ -148,11 +150,12 @@
       }
 
       .section-title {
-      font-size: 1.9rem;
-      font-weight: 500;
-      color: var(--text-primary);
-      letter-spacing: -0.015em;
-    }
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 500;
+        font-size: 1.9rem;
+        letter-spacing: -0.015em;
+        color: var(--text-primary);
+      }
 
       .skills-section {
         margin-bottom: 160px;
@@ -182,11 +185,12 @@
 
 
       .skill-index {
-        font-size: 0.6rem;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.65rem;
+        letter-spacing: 2px;
         color: rgba(255,255,255,0.18);
-        letter-spacing: 4px;
-        margin-bottom: 10px;
         font-weight: 400;
+        margin-bottom: 10px;
       }
 
 
@@ -378,12 +382,13 @@
       }
 
       .contact-label {
+        font-family: 'JetBrains Mono', monospace;
         font-size: 0.65rem;
-        color: var(--text-secondary);
-        text-transform: lowercase;
         letter-spacing: 2px;
-        margin-bottom: 8px;
+        color: var(--text-secondary);
         font-weight: 500;
+        text-transform: lowercase;
+        margin-bottom: 8px;
       }
 
       .contact-value {
@@ -471,7 +476,7 @@
           padding: 60px 20px;
         }
         .hero h1 {
-          font-size: 2.5rem;
+          font-size: 2.5rem; /* responsive scaling */
         }
         .section-title {
           font-size: 2.2rem;
